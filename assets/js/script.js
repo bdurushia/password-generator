@@ -16,6 +16,8 @@ const upperCharSet = upperCaseString.split('');
 const numbersString = "0123456789";
 const numbersSet = numbersString.split('');
 
+let { confirmLowerCase, confirmUpperCase, confirmIncludeNumbers, confirmIncludeSpecChar } = false;
+
 // using String.fromCharCode to grab array of special ascii characters
 const charArrayLowToHigh = function(low, high) {
   const array = [];
@@ -41,38 +43,49 @@ const passLength = function() {
   
 
 const passLower = function() {
-  const confirmLowerCase = window.confirm("Include lowercase letters?");
+  confirmLowerCase = window.confirm("Include lowercase letters?");
   if (confirmLowerCase) {
     charSet = charSet.concat(lowerCharSet);
     return charSet;
   } else {
-    return charSet;
+    return confirmLowerCase;
   }
 }
 
 const passUpper = function() {
-  const confirmUpperCase = window.confirm("Include uppercase letters?");
+  confirmUpperCase = window.confirm("Include uppercase letters?");
   if (confirmUpperCase) {
     charSet = charSet.concat(upperCharSet);
     return charSet; 
   } else {
-    return charSet;
+    return confirmUpperCase;
   }
 }
 
 const passNum = function() {
-  const confirmIncludeNumbers = window.confirm("Include numbers?");
+  confirmIncludeNumbers = window.confirm("Include numbers?");
   if (confirmIncludeNumbers) {
     charSet = charSet.concat(numbersSet);
     return charSet;
+  } else {
+    return confirmIncludeNumbers;
   }
 }
 
 const passSpecChar = function() {
-  const confirmIncludeSpecChar = window.confirm("And would you like to include special characters?");
+  confirmIncludeSpecChar = window.confirm("And would you like to include special characters?");
   if (confirmIncludeSpecChar) {
     charSet = charSet.concat(specCharSetArray);
     return charSet;
+  } else {
+    return confirmIncludeSpecChar;
+  }
+}
+
+function validatePassword() {
+  if (!confirmLowerCase && !confirmUpperCase && !confirmIncludeNumbers && !confirmIncludeSpecChar) {
+    window.alert("You must choose at least one type of character!");
+    return generatePassword();
   }
 }
 
@@ -97,17 +110,18 @@ function generatePassword(event) {
   passUpper();
   passNum();
   passSpecChar();
-  // 2. Generate password based on the seleted criteria
+  // 2. Validate for at least one character choices
+  validatePassword();
+  // 3. Generate password based on the seleted criteria
   makePassword();
-  // 3. Display generated password to the page
-
+  // 4. Display generated password to the page
   return password;
 }
 
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
@@ -115,15 +129,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-
-// Assignment code here
-
-// const passInfo = {
-//   length: passLength(),
-//   lower: passLower(),
-//   upper: passUpper(),
-//   numbers: passNum(),
-//   specialChar: passSpecChar()
-// }
