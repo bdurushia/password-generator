@@ -1,5 +1,6 @@
 // Get references to the #generate element
 const generateBtn = document.querySelector("#generate");
+const passwordContainer = document.querySelector('#password');
 
 let password = '';
 
@@ -32,6 +33,9 @@ let specCharSetArray = charArrayLowToHigh(33, 48)
   .concat(charArrayLowToHigh(91, 97))
   .concat(charArrayLowToHigh(123, 127));
 
+
+////////////////////// Prompt functions ////////////////////////////
+
 const passLength = function() {
   promptLength = parseInt(window.prompt("How many characters would you like your password to be? Choose a number between 8 and 128."));
   if (!promptLength || promptLength < 8 || promptLength > 128) {
@@ -40,7 +44,6 @@ const passLength = function() {
   }
   return promptLength;
 };
-  
 
 const passLower = function() {
   confirmLowerCase = window.confirm("Include lowercase letters?");
@@ -82,6 +85,8 @@ const passSpecChar = function() {
   }
 }
 
+//////////// Validate & Make Password Functions ////////////////
+
 function validatePassword() {
   if (!confirmLowerCase && !confirmUpperCase && !confirmIncludeNumbers && !confirmIncludeSpecChar) {
     window.alert("You must choose at least one type of character!");
@@ -103,6 +108,14 @@ function makePassword() {
   return password;
 }
 
+// Write password to the #password input
+function writePassword() {
+  passwordContainer.value = password;
+}
+
+
+/// Main Function Call ///
+
 function generatePassword(event) {
   // 1. Prompt the user for password criteria
   passLength();
@@ -115,17 +128,26 @@ function generatePassword(event) {
   // 3. Generate password based on the seleted criteria
   makePassword();
   // 4. Display generated password to the page
-  return password;
+  writePassword();
 }
 
+generateBtn.addEventListener("click", generatePassword);
 
-// Write password to the #password input
-function writePassword() {
-  generatePassword();
-  var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
-}
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+//////////////////////DISPLAY FUNCTIONS////////////////////////////
+
+// function hidePassContainer() {
+//   passwordContainer.style.display = 'none';
+// }
+
+// function showPassContainer() {
+//   passwordContainer.style.display = "block";
+// }
+
+// function lengthPrompt() {
+//   const cardBody = document.querySelector('.card-body');
+//   let headerEl = document.createElement = ('h4');
+// }
+
+///////////////////////////////////////////////////////////////////
