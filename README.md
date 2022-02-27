@@ -1,37 +1,31 @@
-# Password Generator Starter Code
+# Random Password Generator.
 
-// GIVEN I need a new, secure password
-// WHEN I click the button to generate a password
-// THEN I am presented with a series of prompts for password criteria
-// WHEN prompted for password criteria
-// THEN I select which criteria to include in the password
-// WHEN prompted for the length of the password
-// THEN I choose a length of at least 8 characters and no more than 128 characters
-// WHEN asked for character types to include in the password
-// THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-// WHEN I answer each prompt
-// THEN my input should be validated and at least one character type should be selected
-// WHEN all prompts are answered
-// THEN a password is generated that matches the selected criteria
-// WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
+---
 
+## Purpose
+A web application to generate randomized and secure passwords.
 
+---
 
+## Built With
+*HTML
+*CSS
+*Javascript
 
+---
 
+## Website
+https://bdurushia.github.io/password-generator/
 
+---
 
-  // Create window.prompt's for password criteria
+## Contribution
+Made by Bryan Durushia, bdurushia@gmail.com
 
-  // STEP 1: Prompt length of password:
-  // Must choose between 8 && 128 characters, 
-  //----> Loop prompt until it meets length criteria
-  
-  // STEP 2: Prompt whether or not to include lowercase, 
-  //-------- uppercase, numeric, and/or special characters
+---
 
-  // STEP 3: Validate input that at least one character type
-  // ------- is selected.
+### &copy;2022 bdurushiadev
 
-  // STEP 4: Generate password based on the selected criteria
+---
+
+![image](https://user-images.githubusercontent.com/76260457/155887548-944dd2ab-00ba-4aa4-8471-71d195e25d0e.png)
