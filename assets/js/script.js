@@ -19,7 +19,7 @@ const numbersSet = numbersString.split('');
 
 let { confirmLowerCase, confirmUpperCase, confirmIncludeNumbers, confirmIncludeSpecChar } = false;
 
-// using String.fromCharCode to grab array of special ascii characters
+// using String.fromCharCode to grab array of special characters
 const charArrayLowToHigh = function(low, high) {
   const array = [];
   for (let i = low; i < high; i++) {
@@ -38,6 +38,7 @@ let specCharSetArray = charArrayLowToHigh(33, 48)
 
 const passLength = function() {
   promptLength = parseInt(window.prompt("How many characters would you like your password to be? Choose a number between 8 and 128."));
+  charSet = [];
   if (!promptLength || promptLength < 8 || promptLength > 128) {
     window.alert("You must enter an answer with the proper criteria.");
     return passLength();
@@ -96,6 +97,7 @@ function validatePassword() {
 
 function makePassword() {
   let passArray = [];
+  password = '';
   for (let i = 0; i < promptLength; i++) {
     let characters = charSet[Math.floor(Math.random() * charSet.length)];
     passArray.push(characters);
@@ -113,10 +115,9 @@ function writePassword() {
   passwordContainer.value = password;
 }
 
-
 /// Main Function Call ///
 
-function generatePassword(event) {
+function generatePassword() {
   // 1. Prompt the user for password criteria
   passLength();
   passLower();
@@ -132,22 +133,3 @@ function generatePassword(event) {
 }
 
 generateBtn.addEventListener("click", generatePassword);
-
-
-
-//////////////////////DISPLAY FUNCTIONS////////////////////////////
-
-// function hidePassContainer() {
-//   passwordContainer.style.display = 'none';
-// }
-
-// function showPassContainer() {
-//   passwordContainer.style.display = "block";
-// }
-
-// function lengthPrompt() {
-//   const cardBody = document.querySelector('.card-body');
-//   let headerEl = document.createElement = ('h4');
-// }
-
-///////////////////////////////////////////////////////////////////
